@@ -1,0 +1,26 @@
+<?php
+
+    /**
+     * Implements hook_init()
+     */
+    function webauth_redirect_init() {
+        
+        // Array of pages to be redirected
+        $pageArray = array('admin', 'user');
+        
+        // if 1st argument in $pageArray, and they are not logged in, send them away
+        if (user_is_anonymous() && in_array(arg(0), $pageArray)) {
+            drupal_goto('/asuwebauth-login');
+        }
+        
+    }
+
+    /**
+     * Valid permissions for this module
+     * @return array An array of valid permissions for this module
+     */
+    function webauth_redirect_perm() {
+        
+        return array('access webauth_redirect', 'administer webauth_redirect');
+        
+    }
