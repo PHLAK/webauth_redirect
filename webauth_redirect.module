@@ -7,7 +7,7 @@
         
         // Get list of pages to be redirected
         $pages = variable_get('webauth_redirect_pages', "admin\r\nuser");
-        $pages = str_replace("\r\n", "\n", $pages);
+        $pages = str_replace("\r\n", "\n", trim($pages));
         $pageArray = explode("\n", $pages);  // $pageArray = array('admin', 'user');
         
         // if 1st argument is in $pageArray, and user is not logged in, redirect them
