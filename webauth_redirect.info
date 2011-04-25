@@ -1,5 +1,5 @@
 name = Webauth Redirect
 description = Redirects anonymous users trying to access /user or /admin to an ASU webauth login page.
-version = 1.0.0
+version = 6.x-1.0.0
 core = 6.x
 package = "Webdev Toolbox"
