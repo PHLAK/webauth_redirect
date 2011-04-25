@@ -1,1 +1,2 @@
 - Create a configuration page where the user can specify pages to be redirected
+- Add ability to redirect sub-pages (not just frist argument)
