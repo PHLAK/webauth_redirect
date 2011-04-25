@@ -6,8 +6,8 @@
     function webauth_redirect_init() {
         
         // Get list of pages to be redirected
-        $pages = variable_get('webauth_redirect_pages', 'admin\nuser');
-        $pageArray = explode($pages, '\n');  // $pageArray = array('admin', 'user');
+        $pages = variable_get('webauth_redirect_pages', 'admin' . PHP_EOL . 'user');
+        $pageArray = explode($pages, PHP_EOL);  // $pageArray = array('admin', 'user');
         
         // if 1st argument is in $pageArray, and user is not logged in, redirect them
         if (user_is_anonymous() && in_array(arg(0), $pageArray)) {
@@ -44,8 +44,8 @@
         $form['pages']['webauth_redirect_pages'] = array(
             '#type' => 'textarea',
             '#title' => t('Redirect these pages'),
-            '#default_value' => variable_get('webauth_redirect_pages', 'admin\nuser'),
-            '#description' => t("Enter one page per line as Drupal paths omitting the trailing slash."),
+            '#default_value' => variable_get('webauth_redirect_pages', 'admin' . PHP_EOL . 'user'),
+            '#description' => t("Enter one page per lineto be redirected when user is not authenticated."),
             '#required' => TRUE,
         );
         
