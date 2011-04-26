@@ -16,8 +16,12 @@
             // Get the destination variable
             $destination = variable_get('webauth_redirect_destination', '/asuwebauth-login');
             
+            // Create the URL query back to this page
+            $url = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+            $query = str_replace('%url', $url, variable_get('webauth_redirect_query', 'callapp=%url'));
+            
             // Redirect the user
-            drupal_goto($destination);
+            drupal_goto($destination, $query);
             
         }
         
@@ -56,6 +60,13 @@
             '#default_value' => variable_get('webauth_redirect_destination', '/asuwebauth-login'),
             '#description' => t('The URL to redirect to if users are not logged in.'),
             '#required' => TRUE,
+        );
+        
+        $form['pages']['webauth_redirect_query'] = array(
+            '#type' => 'textfield',
+            '#title' => t('URL Query'),
+            '#default_value' => variable_get('webauth_redirect_query', 'callapp=%url'),
+            '#description' => t('The query to be appended to the URL.  %url will be replaced with the URL the user is trying to access.'),
         );
         
         return system_settings_form($form);
