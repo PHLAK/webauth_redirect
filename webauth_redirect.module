@@ -14,9 +14,9 @@
         if (user_is_anonymous() && in_array(arg(0), $pageArray)) {
             
             // Get the destination variable
-            $destination = variable_get('webauth_redirect_destination', '/asuwebauth-login');
+            $destination = variable_get('webauth_redirect_destination', 'https://weblogin.asu.edu/cgi-bin/login');
             
-            // Create the URL query back to this page
+            // Create the URL query  back to this page
             $url = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
             $query = str_replace('%url', $url, variable_get('webauth_redirect_query', 'callapp=%url'));
             
@@ -57,7 +57,7 @@
         $form['pages']['webauth_redirect_destination'] = array(
             '#type' => 'textfield',
             '#title' => t('Redirect to this page'),
-            '#default_value' => variable_get('webauth_redirect_destination', '/asuwebauth-login'),
+            '#default_value' => variable_get('webauth_redirect_destination', 'https://weblogin.asu.edu/cgi-bin/login'),
             '#description' => t('The URL to redirect to if users are not logged in.'),
             '#required' => TRUE,
         );
