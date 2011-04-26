@@ -17,9 +17,9 @@
             $destination = variable_get('webauth_redirect_destination', 'https://weblogin.asu.edu/cgi-bin/login');
             
             // Create the URL query  back to this page
-            $url = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+            $url = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['SERVER_NAME'] . request_uri();
             $query = str_replace('%url', $url, variable_get('webauth_redirect_query', 'callapp=%url'));
-            
+
             // Redirect the user
             drupal_goto($destination, $query);
             
