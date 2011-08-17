@@ -86,7 +86,7 @@
             'description' => t('Settings for Webauth Redirect.'),
             'page callback' => 'drupal_get_form',
             'page arguments' => array('webauth_redirect_admin'),
-            'access arguments' => array('access administration pages'),
+            'access arguments' => array('access administration pages, administer webauth_redirect'),
             'type' => MENU_NORMAL_ITEM,
       );
       
